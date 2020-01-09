@@ -2,7 +2,9 @@
 
 namespace Acl\Test\TestCase;
 
+use Acl\Model\Table\AcosTable;
 use Acl\Shell\AclShell;
+use Cake\Console\ConsoleIo;
 use Cake\Core\Configure;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
@@ -18,16 +20,16 @@ class AclShellTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->io = $this->getMockBuilder('Cake\Console\ConsoleIo')
+        $this->io = $this->getMockBuilder(ConsoleIo::class)
             ->disableOriginalConstructor()
             ->getMock();
-        $this->Shell = $this->getMockBuilder('Acl\Shell\AclShell')
+        $this->Shell = $this->getMockBuilder(AclShell::class)
             ->setMethods(['in', 'out', 'hr', 'err', '_stop'])
             ->setConstructorArgs([$this->io])
             ->getMock();
         Configure::write('Acl.classname', 'DbAcl');
         Configure::write('Acl.database', 'test');
-        $this->Acos = TableRegistry::getTableLocator()->get('Acl\Model\Table\AcosTable');
+        $this->Acos = TableRegistry::getTableLocator()->get(AcosTable::class);
         $this->Shell->startup();
     }
 

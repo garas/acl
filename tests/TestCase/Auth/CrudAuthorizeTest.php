@@ -16,6 +16,8 @@
 namespace Acl\Test\TestCase\Auth;
 
 use Acl\Auth\CrudAuthorize;
+use Acl\Controller\Component\AclComponent;
+use Cake\Controller\ComponentRegistry;
 use Cake\Core\Configure;
 use Cake\Http\ServerRequest;
 use Cake\Routing\Router;
@@ -39,10 +41,10 @@ class CrudAuthorizeTest extends TestCase
         Configure::write('Routing.prefixes', []);
         Router::reload();
 
-        $this->Acl = $this->getMockBuilder('Acl\Controller\Component\AclComponent')
+        $this->Acl = $this->getMockBuilder(AclComponent::class)
             ->disableOriginalConstructor()
             ->getMock();
-        $this->Components = $this->getMockBuilder('Cake\Controller\ComponentRegistry')
+        $this->Components = $this->getMockBuilder(ComponentRegistry::class)
             ->getMock();
 
         $this->auth = new CrudAuthorize($this->Components);

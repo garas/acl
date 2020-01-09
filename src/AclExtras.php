@@ -26,6 +26,7 @@ use Cake\Http\ServerRequest;
 use Cake\Routing\Router;
 use Cake\Utility\Hash;
 use Cake\Utility\Inflector;
+use ReflectionClass;
 
 /**
  * Provides features for additional ACL operations.
@@ -320,7 +321,7 @@ class AclExtras
             }
             // Skip anything that is not a concrete controller
             $namespace = $this->_getNamespace($controller, $pluginPath, $prefix);
-            if (!(new \ReflectionClass($namespace))->isInstantiable()) {
+            if (!(new ReflectionClass($namespace))->isInstantiable()) {
                 continue;
             }
             $controllersNames[] = $controllerName;
@@ -405,7 +406,7 @@ class AclExtras
     {
         $callbacks = [];
         $namespace = $this->_getNamespace($className, $pluginPath, $prefixPath);
-        $reflection = new \ReflectionClass($namespace);
+        $reflection = new ReflectionClass($namespace);
         if ($reflection->isAbstract()) {
             return $callbacks;
         }

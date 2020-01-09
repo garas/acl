@@ -20,8 +20,9 @@
 
 namespace Acl\Test\TestCase;
 
+use Acl\AclExtras;
+use Acl\Controller\Component\AclComponent;
 use Cake\Core\Configure;
-use Cake\Core\Plugin;
 use Cake\Datasource\ConnectionManager;
 use Cake\TestSuite\TestCase;
 
@@ -56,7 +57,7 @@ class AclExtrasTestCase extends TestCase
         Configure::write('Acl.classname', 'DbAcl');
         Configure::write('Acl.database', 'test');
 
-        $this->Task = $this->getMockBuilder('Acl\AclExtras')
+        $this->Task = $this->getMockBuilder(AclExtras::class)
             ->setMethods(['in', 'out', 'hr', 'createFile', 'error', 'err', 'clear', 'getControllerList'])
             ->getMock();
     }
@@ -104,7 +105,7 @@ class AclExtrasTestCase extends TestCase
     {
         $this->assertEquals($this->Task->Acl, null);
         $this->Task->startup();
-        $this->assertInstanceOf('Acl\Controller\Component\AclComponent', $this->Task->Acl);
+        $this->assertInstanceOf(AclComponent::class, $this->Task->Acl);
     }
 
     /**
@@ -143,7 +144,7 @@ class AclExtrasTestCase extends TestCase
 
     protected function _setupWithNestedPrefixRoutes()
     {
-        $this->Task = $this->getMockBuilder('Acl\AclExtras')
+        $this->Task = $this->getMockBuilder(AclExtras::class)
             ->setMethods(['in', 'out', 'hr', 'createFile', 'error', 'err', 'clear', 'getControllerList', 'getPrefixes'])
             ->getMock();
 
@@ -432,7 +433,7 @@ class AclExtrasTestCase extends TestCase
         $Aco = $this->Task->Acl->Aco;
         $originalNode = $Aco->node('controllers/Nested\TestPluginTwo/PluginTwo')->first();
 
-        $cleanTask = $this->getMockBuilder('Acl\AclExtras')
+        $cleanTask = $this->getMockBuilder(AclExtras::class)
             ->setMethods(['in', 'out', 'hr', 'createFile', 'error', 'err', 'clear', 'getControllerList'])
             ->getMock();
 

@@ -16,6 +16,7 @@
 namespace Acl\Adapter;
 
 use Acl\AclInterface;
+use Acl\Controller\Component\AclComponent;
 use Cake\Controller\Component;
 use Cake\Core\App;
 use Cake\ORM\TableRegistry;

@@ -15,10 +15,12 @@
 
 namespace Acl\Test\TestCase\Controller\Component;
 
+use Acl\AclInterface;
 use Acl\Controller\Component\AclComponent;
 use Cake\Controller\ComponentRegistry;
 use Cake\Core\Configure;
 use Cake\TestSuite\TestCase;
+use stdClass;
 
 /**
  * Test Case for AclComponent
@@ -36,7 +38,7 @@ class AclComponentTest extends TestCase
     {
         parent::setUp();
         if (!class_exists('MockAclImplementation', false)) {
-            $this->getMockBuilder('Acl\AclInterface')
+            $this->getMockBuilder(AclInterface::class)
                 ->setMockClassName('MockAclImplementation')
                 ->getMock();
         }
@@ -77,7 +79,7 @@ class AclComponentTest extends TestCase
      */
     public function testAdapter()
     {
-        $Adapter = $this->getMockBuilder('Acl\AclInterface')->getMock();
+        $Adapter = $this->getMockBuilder(AclInterface::class)->getMock();
         $Adapter->expects($this->once())->method('initialize')->with($this->Acl);
 
         $this->assertNull($this->Acl->adapter($Adapter));
@@ -92,7 +94,7 @@ class AclComponentTest extends TestCase
      */
     public function testAdapterException()
     {
-        $thing = new \StdClass();
+        $thing = new stdClass();
         $this->Acl->adapter($thing);
     }
 }

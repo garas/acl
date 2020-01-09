@@ -16,7 +16,6 @@
 namespace Acl\Auth;
 
 use Cake\Auth\BaseAuthorize as ParentAuthorize;
-use Cake\Controller\ComponentRegistry;
 use Cake\Http\ServerRequest;
 use Cake\Utility\Inflector;
 

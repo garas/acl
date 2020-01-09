@@ -15,14 +15,14 @@
 
 namespace Acl\Shell;
 
+use Acl\Adapter\DbAcl;
 use Acl\Controller\Component\AclComponent;
 use Cake\Console\Shell;
 use Cake\Controller\ComponentRegistry;
-use Cake\Controller\Controller;
 use Cake\Core\App;
 use Cake\Core\Configure;
+use Cake\Database\Exception;
 use Cake\ORM\TableRegistry;
-use Cake\Utility\Hash;
 
 /**
  * Shell for ACL management. This console is known to have issues with zend.ze1_compatibility_mode
@@ -73,7 +73,7 @@ class AclShell extends Shell
         }
         if (
             $class !== 'DbAcl' &&
-            !is_subclass_of($className, 'Acl\Adapter\DbAcl')
+            !is_subclass_of($className, DbAcl::class)
         ) {
             $out = "--------------------------------------------------\n";
             $out .= __d('cake_acl', 'Error: Your current CakePHP configuration is set to an ACL implementation other than DB.') . "\n";
@@ -89,7 +89,7 @@ class AclShell extends Shell
             try {
                 TableRegistry::getTableLocator()->get('Aros')->getSchema();
                 TableRegistry::getTableLocator()->remove('Aros');
-            } catch (\Cake\Database\Exception $e) {
+            } catch (Exception $e) {
                 $this->out(__d('cake_acl', 'Acl database tables not found. To create them, run:'));
                 $this->out();
                 $this->out('  bin/cake Migrations.migrations migrate -p Acl');

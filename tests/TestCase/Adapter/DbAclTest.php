@@ -19,7 +19,6 @@ use Acl\Adapter\DbAcl;
 use Acl\Controller\Component\AclComponent;
 use Acl\Model\Entity\Aco;
 use Acl\Model\Entity\Aro;
-use Acl\Model\Table\AclNodesTable;
 use Acl\Model\Table\AcosTable;
 use Acl\Model\Table\ArosTable;
 use Acl\Model\Table\PermissionsTable;
@@ -49,8 +48,8 @@ class AroTwoTest extends ArosTable
         $this->setTable('aro_twos');
         $this->associations()->removeAll();
         $this->belongsToMany('AcoTwoTest', [
-            'through' => __NAMESPACE__ . '\PermissionTwoTest',
-            'className' => __NAMESPACE__ . '\AroTwoTest',
+            'through' => PermissionTwoTest::class,
+            'className' => AroTwoTest::class,
         ]);
     }
 }
@@ -75,8 +74,8 @@ class AcoTwoTest extends AcosTable
         $this->setTable('aco_twos');
         $this->associations()->removeAll();
         $this->belongsToMany('AroTwoTest', [
-            'through' => __NAMESPACE__ . '\PermissionTwoTest',
-            'className' => __NAMESPACE__ . '\AroTwoTest',
+            'through' => PermissionTwoTest::class,
+            'className' => AroTwoTest::class,
         ]);
     }
 }
@@ -98,23 +97,22 @@ class PermissionTwoTest extends PermissionsTable
     {
         parent::initialize($config);
         $this->setAlias('PermissionTwoTest');
-        $this->setEntityClass('Acl\Model\Entity\Permission');
+        $this->setEntityClass(\Acl\Model\Entity\Permission::class);
         $this->setTable('aros_aco_twos');
         $this->associations()->removeAll();
         $this->belongsTo('AroTwoTest', [
             'foreignKey' => 'aro_id',
-            'className' => __NAMESPACE__ . '\AroTwoTest',
+            'className' => AroTwoTest::class,
         ]);
         $this->belongsTo('AcoTwoTest', [
             'foreignKey' => 'aco_id',
-            'className' => __NAMESPACE__ . '\AcoTwoTest',
+            'className' => AcoTwoTest::class,
         ]);
     }
 }
 
 /**
  * DbAclTwoTest class
- *
  */
 class DbAclTwoTest extends DbAcl
 {
@@ -162,18 +160,18 @@ class DbAclTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        Configure::write('Acl.classname', __NAMESPACE__ . '\DbAclTwoTest');
+        Configure::write('Acl.classname', DbAclTwoTest::class);
         Configure::write('Acl.database', 'test');
 
         TableRegistry::getTableLocator()->clear();
         TableRegistry::getTableLocator()->get('Permissions', [
-            'className' => __NAMESPACE__ . '\PermissionTwoTest',
+            'className' => PermissionTwoTest::class,
         ]);
         TableRegistry::getTableLocator()->get('AroTwoTest', [
-            'className' => __NAMESPACE__ . '\AroTwoTest',
+            'className' => AroTwoTest::class,
         ]);
         TableRegistry::getTableLocator()->get('AcoTwoTest', [
-            'className' => __NAMESPACE__ . '\AcoTwoTest',
+            'className' => AcoTwoTest::class,
         ]);
 
         $Collection = new ComponentRegistry();

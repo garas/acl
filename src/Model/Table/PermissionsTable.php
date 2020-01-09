@@ -16,10 +16,7 @@
 namespace Acl\Model\Table;
 
 use Cake\Core\App;
-use Cake\Core\Configure;
 use Cake\Core\Exception\Exception;
-use Cake\ORM\Table;
-use Cake\Utility\Hash;
 
 /**
  * Permissions linking AROs with ACOs

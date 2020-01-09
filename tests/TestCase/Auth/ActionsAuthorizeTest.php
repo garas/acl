@@ -16,6 +16,9 @@
 namespace Acl\Test\TestCase\Auth;
 
 use Acl\Auth\ActionsAuthorize;
+use Acl\Controller\Component\AclComponent;
+use Cake\Controller\ComponentRegistry;
+use Cake\Controller\Controller;
 use Cake\Http\ServerRequest;
 use Cake\TestSuite\TestCase;
 
@@ -34,13 +37,13 @@ class ActionsAuthorizeTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->controller = $this->getMockBuilder('Cake\Controller\Controller')
+        $this->controller = $this->getMockBuilder(Controller::class)
             ->disableOriginalConstructor()
             ->getMock();
-        $this->Acl = $this->getMockBuilder('Acl\Controller\Component\AclComponent')
+        $this->Acl = $this->getMockBuilder(AclComponent::class)
             ->disableOriginalConstructor()
             ->getMock();
-        $this->Collection = $this->getMockBuilder('Cake\Controller\ComponentRegistry')
+        $this->Collection = $this->getMockBuilder(ComponentRegistry::class)
             ->getMock();
 
         $this->auth = new ActionsAuthorize($this->Collection);

@@ -15,18 +15,13 @@
 
 namespace Cake\Acl\Test\TestCase\Model\Behavior;
 
-use Acl\Model\Behavior\AclBehavior;
 use Acl\Model\Entity\Aco;
 use Acl\Model\Entity\Aro;
-use Acl\Model\Table\AclNodesTable;
-use Acl\Model\Table\AcosTable;
-use Acl\Model\Table\ArosTable;
 use Cake\Core\App;
 use Cake\Core\Configure;
 use Cake\ORM\Entity;
 use Cake\ORM\Table;
 use Cake\ORM\TableRegistry;
-use Cake\TestSuite\Fixture\TestModel;
 use Cake\TestSuite\TestCase;
 
 /**
@@ -45,14 +40,14 @@ class AclPeople extends Table
     public function initialize(array $config)
     {
         $this->setTable('people');
-        $this->setEntityClass(__NAMESPACE__ . '\AclPerson');
+        $this->setEntityClass(AclPerson::class);
         $this->addBehavior('Acl', ['both']);
         $this->belongsTo('Mother', [
-            'className' => __NAMESPACE__ . '\AclPeople',
+            'className' => AclPeople::class,
             'foreignKey' => 'mother_id',
         ]);
         $this->hasMany('Child', [
-            'className' => __NAMESPACE__ . '\AclPeople',
+            'className' => AclPeople::class,
             'foreignKey' => 'mother_id',
         ]);
     }
@@ -102,7 +97,7 @@ class AclUsers extends Table
     public function initialize(array $config)
     {
         $this->setTable('users');
-        $this->setEntityClass(__NAMESPACE__ . '\AclUser');
+        $this->setEntityClass(AclUser::class);
         $this->addBehavior('Acl', ['type' => 'requester']);
     }
 }
@@ -135,7 +130,7 @@ class AclPosts extends Table
     public function initialize(array $config)
     {
         $this->setTable('posts');
-        $this->setEntityClass(__NAMESPACE__ . '\AclPost');
+        $this->setEntityClass(AclPost::class);
         $this->addBehavior('Acl', ['type' => 'Controlled']);
     }
 }
@@ -207,13 +202,13 @@ class AclBehaviorTest extends TestCase
         ]);
 
         TableRegistry::getTableLocator()->get('AclUsers', [
-            'className' => __NAMESPACE__ . '\AclUsers',
+            'className' => AclUsers::class,
         ]);
         TableRegistry::getTableLocator()->get('AclPeople', [
-            'className' => __NAMESPACE__ . '\AclPeople',
+            'className' => AclPeople::class,
         ]);
         TableRegistry::getTableLocator()->get('AclPosts', [
-            'className' => __NAMESPACE__ . '\AclPosts',
+            'className' => AclPosts::class,
         ]);
     }
 
@@ -253,7 +248,7 @@ class AclBehaviorTest extends TestCase
     {
         TableRegistry::getTableLocator()->clear();
         $User = TableRegistry::getTableLocator()->get('AclPeople', [
-            'className' => __NAMESPACE__ . '\AclPeople',
+            'className' => AclPeople::class,
         ]);
         $this->assertEquals('both', $User->behaviors()->Acl->getConfig('type'));
         $this->assertTrue(is_object($User->Aro));

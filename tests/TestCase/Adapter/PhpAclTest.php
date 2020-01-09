@@ -16,7 +16,6 @@
 namespace Acl\Test\TestCase\Adapter;
 
 use Acl\Adapter\PhpAcl;
-use Acl\Adapter\Utility\PhpAco;
 use Acl\Adapter\Utility\PhpAro;
 use Acl\Controller\Component\AclComponent;
 use Cake\Controller\ComponentRegistry;

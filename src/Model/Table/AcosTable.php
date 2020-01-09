@@ -15,7 +15,6 @@
 
 namespace Acl\Model\Table;
 
-use Acl\Model\Table\AclNodesTable;
 use Cake\Core\App;
 
 /**

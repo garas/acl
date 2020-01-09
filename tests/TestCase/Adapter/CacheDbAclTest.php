@@ -16,12 +16,10 @@
 namespace Acl\Test\TestCase\Adapter;
 
 use Acl\Adapter\CachedDbAcl;
-use Acl\Controller\Component\AclComponent;
+use Acl\Model\Table\PermissionsTable;
 use Cake\Cache\Cache;
-use Cake\Controller\ComponentRegistry;
 use Cake\Core\Configure;
 use Cake\ORM\Entity;
-use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
@@ -80,7 +78,7 @@ class CacheDbAclTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        Configure::write('Acl.classname', __NAMESPACE__ . '\CachedDbAclTwoTest');
+        Configure::write('Acl.classname', CachedDbAclTwoTest::class);
 
         $this->CachedDb = new CachedDbAclTwoTest();
 
@@ -130,7 +128,7 @@ class CacheDbAclTest extends TestCase
     public function testCaching()
     {
         $this->CachedDb->Permission = $this
-            ->getMockBuilder('Acl\Model\Table\PermissionsTable')
+            ->getMockBuilder(PermissionsTable::class)
             ->getMock();
 
         $this->CachedDb->Permission
@@ -151,7 +149,7 @@ class CacheDbAclTest extends TestCase
     public function testCacheFalse()
     {
         $this->CachedDb->Permission = $this
-            ->getMockBuilder('Acl\Model\Table\PermissionsTable')
+            ->getMockBuilder(PermissionsTable::class)
             ->getMock();
 
         $this->CachedDb->Permission
@@ -172,7 +170,7 @@ class CacheDbAclTest extends TestCase
     public function testCacheCleared()
     {
         $this->CachedDb->Permission = $this
-            ->getMockBuilder('Acl\Model\Table\PermissionsTable')
+            ->getMockBuilder(PermissionsTable::class)
             ->getMock();
 
         $this->CachedDb->Permission

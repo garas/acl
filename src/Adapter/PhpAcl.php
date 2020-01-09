@@ -23,8 +23,6 @@ use Acl\Adapter\Utility\PhpAro;
 use Cake\Controller\Component;
 use Cake\Core\Configure\Engine\PhpConfig;
 use Cake\Core\Exception\Exception;
-use Cake\Utility\Hash;
-use Cake\Utility\Inflector;
 
 /**
  * PhpAcl implements an access control system using a plain PHP configuration file.

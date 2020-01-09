@@ -16,19 +16,14 @@
 namespace Acl\Test\TestCase\Model\Table;
 
 use Acl\Adapter\DbAcl;
-use Acl\Model\Table\AclNodesTable;
 use Acl\Model\Table\AcoActionsTable;
 use Acl\Model\Table\AcosTable;
 use Acl\Model\Table\ArosTable;
 use Acl\Model\Table\PermissionsTable;
-use Cake\Core\App;
 use Cake\Core\Configure;
-use Cake\Core\Plugin;
 use Cake\ORM\Entity;
-use Cake\ORM\Table;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
-use Cake\Utility\Hash;
 
 /**
  * Aro Test Wrapper
@@ -49,8 +44,8 @@ class DbAroTest extends ArosTable
         $this->setAlias('DbAroTest');
         $this->associations()->removeAll();
         $this->belongsToMany('DbAcoTest', [
-            'through' => __NAMESPACE__ . '\DbPermissionTest',
-            'className' => __NAMESPACE__ . '\DbAcoTest',
+            'through' => DbPermissionTest::class,
+            'className' => DbAcoTest::class,
             'targetForeignKey' => 'id',
             'foreignKey' => 'aco_id',
         ]);
@@ -76,8 +71,8 @@ class DbAcoTest extends AcosTable
         $this->setAlias('DbAcoTest');
         $this->associations()->removeAll();
         $this->belongsToMany('DbAroTest', [
-            'through' => __NAMESPACE__ . '\DbPermissionTest',
-            'className' => __NAMESPACE__ . '\DbAroTest',
+            'through' => DbPermissionTest::class,
+            'className' => DbAroTest::class,
             'targetForeignKey' => 'id',
             'foreignKey' => 'aco_id',
         ]);
@@ -103,11 +98,11 @@ class DbPermissionTest extends PermissionsTable
         $this->setAlias('DbPermissionTest');
         $this->associations()->removeAll();
         $this->belongsTo('DbAroTest', [
-            'className' => __NAMESPACE__ . '\DbAroTest',
+            'className' => DbAroTest::class,
             'foreignKey' => 'aro_id',
         ]);
         $this->belongsTo('DbAcoTest', [
-            'className' => __NAMESPACE__ . '\DbAcoTest',
+            'className' => DbAcoTest::class,
             'foreignKey' => 'aco_id',
         ]);
     }
@@ -293,7 +288,7 @@ class AclNodeTest extends TestCase
     public function testNodeArrayFind()
     {
         $Aro = TableRegistry::getTableLocator()->get('DbAroTest');
-        $Aro->setEntityClass(__NAMESPACE__ . '\DbAroUserTest');
+        $Aro->setEntityClass(DbAroUserTest::class);
         Configure::write('DbAclbindMode', 'string');
         $result = $Aro->node(['DbAroTest' => ['id' => '1', 'foreign_key' => '1']])->extract('id')->toArray();
         $expected = [3, 2, 1];

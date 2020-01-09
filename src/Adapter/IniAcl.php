@@ -18,7 +18,6 @@ namespace Acl\Adapter;
 use Acl\AclInterface;
 use Cake\Controller\Component;
 use Cake\Core\Configure\Engine\IniConfig;
-use Cake\Core\InstanceConfigTrait;
 use Cake\Utility\Hash;
 
 /**
