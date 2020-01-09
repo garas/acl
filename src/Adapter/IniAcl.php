@@ -24,6 +24,7 @@ use Cake\Utility\Hash;
  * IniAcl implements an access control system using an INI file. An example
  * of the ini file used can be found in /config/acl.ini.
  *
+ * @property array $options
  */
 class IniAcl implements AclInterface
 {

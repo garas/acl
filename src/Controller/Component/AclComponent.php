@@ -45,14 +45,14 @@ class AclComponent extends Component
     /**
      * Aro object.
      *
-     * @var string
+     * @var \Acl\Adapter\Utility\PhpAro
      */
     public $Aro;
 
     /**
      * Aco object
      *
-     * @var string
+     * @var \Acl\Adapter\Utility\PhpAco
      */
     public $Aco;
 

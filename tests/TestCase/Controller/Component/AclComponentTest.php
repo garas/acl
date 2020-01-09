@@ -25,6 +25,7 @@ use stdClass;
 /**
  * Test Case for AclComponent
  *
+ * @property \Acl\Controller\Component\AclComponent $Acl
  */
 class AclComponentTest extends TestCase
 {

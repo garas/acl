@@ -58,6 +58,7 @@ class CachedDbAclTwoTest extends CachedDbAcl
 /**
  * Test case for AclComponent using the CachedDbAcl implementation.
  *
+ * @property \Acl\Test\TestCase\Adapter\CachedDbAclTwoTest $CachedDb
  */
 class CacheDbAclTest extends TestCase
 {

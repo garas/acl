@@ -25,6 +25,10 @@ use Cake\TestSuite\TestCase;
 /**
  * Class ActionsAuthorizeTest
  *
+ * @property \PHPUnit\Framework\MockObject\MockObject&\Cake\Controller\Controller $controller
+ * @property \PHPUnit\Framework\MockObject\MockObject&\Acl\Controller\Component\AclComponent $Acl
+ * @property \PHPUnit\Framework\MockObject\MockObject&\Cake\Controller\ComponentRegistry $Collection
+ * @property \Acl\Auth\ActionsAuthorize $auth
  */
 class ActionsAuthorizeTest extends TestCase
 {

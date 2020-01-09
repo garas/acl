@@ -20,6 +20,10 @@ use Cake\Core\App;
 /**
  * Access Control Object
  *
+ * @property \Cake\ORM\Association\BelongsToMany&\Acl\Model\Table\ArosTable $Aros
+ * @property \Cake\ORM\Association\HasMany&\Acl\Model\Table\AcosTable $AcoChildren
+ *
+ * @mixin \Cake\ORM\Behavior\TreeBehavior
  */
 class AcosTable extends AclNodesTable
 {

@@ -38,6 +38,10 @@ use Cake\ORM\TableRegistry;
  *            edit
  * }}}
  *
+ *
+ * @property \Acl\Model\Table\AcosTable $Aco
+ * @property \Acl\Model\Table\ArosTable $Aro
+ * @property \Acl\Model\Table\PermissionsTable $Permission
  */
 class DbAcl implements AclInterface
 {
@@ -60,7 +64,7 @@ class DbAcl implements AclInterface
     /**
      * Initializes the containing component and sets the Aro/Aco objects to it.
      *
-     * @param AclComponent $component Component
+     * @param \Acl\Controller\Component\AclComponent $component Component
      * @return void
      */
     public function initialize(Component $component)

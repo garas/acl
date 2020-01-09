@@ -36,6 +36,7 @@ include dirname(__FILE__) . DS . 'test_plugin_admin_controllers.php';
 /**
  * AclExtras Shell Test case
  *
+ * @property \PHPUnit\Framework\MockObject\MockObject&\Acl\AclExtras $Task
  */
 class AclExtrasTestCase extends TestCase
 {

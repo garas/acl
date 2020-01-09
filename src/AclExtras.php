@@ -31,6 +31,8 @@ use ReflectionClass;
 /**
  * Provides features for additional ACL operations.
  * Can be used in either a CLI or Web context.
+ *
+ * @property \Acl\Model\Table\AcosTable $Aco
  */
 class AclExtras
 {
@@ -369,7 +371,7 @@ class AclExtras
      * @param string $path The path to check
      * @param string $alias The alias to create
      * @param int $parentId The parent id to use when creating.
-     * @return array Aco Node array
+     * @return \Acl\Model\Entity\Aco Aco Node array
      */
     protected function _checkNode($path, $alias, $parentId = null)
     {

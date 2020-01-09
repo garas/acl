@@ -20,7 +20,6 @@ use Cake\Core\Exception;
 use Cake\Database\Expression\IdentifierExpression;
 use Cake\Datasource\ConnectionManager;
 use Cake\ORM\Entity;
-use Cake\ORM\Query;
 use Cake\ORM\Table;
 use Cake\ORM\TableRegistry;
 
@@ -45,7 +44,7 @@ class AclNodesTable extends Table
      * Retrieves the Aro/Aco node for this model
      *
      * @param string|array|Table $ref Array with 'model' and 'foreign_key', model object, or string value
-     * @return array|Query|false Node found in database
+     * @return array|\Cake\ORM\Query|false Node found in database
      * @throws \Cake\Core\Exception\Exception when binding to a model that doesn't exist.
      */
     public function node($ref = null)

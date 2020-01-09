@@ -26,6 +26,9 @@ use Cake\TestSuite\TestCase;
 /**
  * Class CrudAuthorizeTest
  *
+ * @property \PHPUnit\Framework\MockObject\MockObject&\Acl\Controller\Component\AclComponent $Acl
+ * @property \PHPUnit\Framework\MockObject\MockObject&\Cake\Controller\ComponentRegistry $Components
+ * @property \Acl\Auth\CrudAuthorize $auth
  */
 class CrudAuthorizeTest extends TestCase
 {

@@ -9,6 +9,11 @@ use Cake\Core\Configure;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
+/**
+ * @property \PHPUnit\Framework\MockObject\MockObject&\Cake\Console\ConsoleIo $io
+ * @property \PHPUnit\Framework\MockObject\MockObject&\Acl\Shell\AclShell $Shell
+ * @property \Acl\Model\Table\AcosTable $Acos
+ */
 class AclShellTest extends TestCase
 {
     public $fixtures = [

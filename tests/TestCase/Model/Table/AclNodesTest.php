@@ -141,7 +141,7 @@ class DbAroUserTest extends Entity
      * bindNode method
      *
      * @param string|array|Model $ref Ref
-     * @return void
+     * @return array|string
      */
     public function bindNode($ref = null)
     {
@@ -208,6 +208,7 @@ class AclNodeTest extends TestCase
      */
     public function testNode()
     {
+        /** @var \Acl\Test\TestCase\Model\Table\DbAcoTest $Aco */
         $Aco = TableRegistry::getTableLocator()->get('DbAcoTest');
 
         $result = $Aco->node('Controller1');

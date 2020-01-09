@@ -24,6 +24,8 @@ use Cake\TestSuite\TestCase;
 /**
  * Test case for the IniAcl implementation
  *
+ * @property \Acl\Adapter\IniAcl $IniAcl
+ * @property \Acl\Controller\Component\AclComponent $Acl
  */
 class IniAclTest extends TestCase
 {

@@ -21,6 +21,10 @@ use Cake\Core\Exception\Exception;
 /**
  * Permissions linking AROs with ACOs
  *
+ * @property \Cake\ORM\Association\BelongsTo&\Acl\Model\Table\ArosTable $Aros
+ * @property \Acl\Model\Table\ArosTable $Aro
+ * @property \Cake\ORM\Association\BelongsTo&\Acl\Model\Table\AcosTable $Acos
+ * @property \Acl\Model\Table\AcosTable $Aco
  */
 class PermissionsTable extends AclNodesTable
 {

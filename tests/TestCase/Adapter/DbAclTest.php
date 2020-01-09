@@ -137,6 +137,7 @@ class DbAclTwoTest extends DbAcl
 /**
  * Test case for AclComponent using the DbAcl implementation.
  *
+ * @property \Acl\Controller\Component\AclComponent $Acl
  */
 class DbAclTest extends TestCase
 {

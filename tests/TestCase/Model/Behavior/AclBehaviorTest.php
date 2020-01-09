@@ -27,6 +27,7 @@ use Cake\TestSuite\TestCase;
 /**
  * Test Person class - self joined model
  *
+ * @mixin \Acl\Model\Behavior\AclBehavior
  */
 class AclPeople extends Table
 {
@@ -278,6 +279,7 @@ class AclBehaviorTest extends TestCase
         $this->assertEquals($Post->getAlias(), $result->model);
         $this->assertEquals($saved->id, $result->foreign_key);
 
+        /** @var \Cake\Acl\Test\TestCase\Model\Behavior\AclPeople $Person */
         $Person = TableRegistry::getTableLocator()->get('AclPeople');
         $Person->deleteAll(['name' => 'person']);
         $aroData = new AclPerson([
@@ -386,6 +388,7 @@ class AclBehaviorTest extends TestCase
      */
     public function testAfterDelete()
     {
+        /** @var \Cake\Acl\Test\TestCase\Model\Behavior\AclPeople $Person */
         $Person = TableRegistry::getTableLocator()->get('AclPeople');
 
         $this->Aro->save(new Aro([
@@ -449,6 +452,7 @@ class AclBehaviorTest extends TestCase
      */
     public function testNode()
     {
+        /** @var \Cake\Acl\Test\TestCase\Model\Behavior\AclPeople $Person */
         $Person = TableRegistry::getTableLocator()->get('AclPeople');
         $this->Aro->save(new Aro([
             'model' => $Person->getAlias(),
